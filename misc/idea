@@ -1,0 +1,43 @@
+Format d'un objet:
+Console | Titre | Catégorie | Nbjoueur | Etat
+
+Ajouter & Supprimer & Modifier -> sur l'objet
+
+Recherche d'un objet -> Par console et par titre
+
+
+
+
+Models
+Game: This model will store information about a game, such as title, publisher, year of release, platform, and availability status.
+
+Console: This model will store information about a console, such as name, manufacturer, year of release, and availability status.
+
+
+
+Views
+GameListView: This view will display a list of all games in the storage system.
+
+GameDetailView: This view will display detailed information about a specific game.
+
+ConsoleListView: This view will display a list of all consoles in the storage system.
+
+ConsoleDetailView: This view will display detailed information about a specific console.
+
+
+
+Controllers
+GameController: This controller will handle requests related to games, such as displaying the game list or game details.
+
+ConsoleController: This controller will handle requests related to consoles, such as displaying the console list or console details.
+
+
+
+URLs
+/games/: This URL will map to the GameListView.
+
+/games/<int:pk>/: This URL will map to the GameDetailView.
+
+/consoles/: This URL will map to the ConsoleListView.
+
+/consoles/<int:pk>/: This URL will map to the ConsoleDetailView.
