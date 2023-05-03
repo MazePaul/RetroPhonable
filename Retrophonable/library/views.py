@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from django.http import Http404
 from .models import Game
 
 def GameListView(request):
@@ -12,6 +13,6 @@ def GameListView(request):
     return render(request, "library/index.html", context)
 
 
-def GameDetailView(request, Game_id):
-    response = "voici le jeu précisemment: %s"
-    return 0
+def GameDetailView(request, game_id):
+    game = get_object_or_404(Game, pk=game_id)
+    return render(request, "library/detail.html", {"game":game})

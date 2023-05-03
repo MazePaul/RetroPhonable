@@ -103,26 +103,24 @@
   </header>
 
   <main>
-    <h2><a href="/library/{{ game.id }}">Games</a></h2>
+    <h2><a href="/library/">Games</a></h2>
 
     <table>
       <thead>
         <tr>
-          <th>Console</th>
           <th>Title</th>
+          <th>Console</th>
+          <th>Categorie</th>
+          <th>Nombre de Joueur(s)</th>
         </tr>
       </thead>
       <tbody>
-        {% for game in games %}
         <tr>
-          <td><a href="/library/{{ game.id }}">{{ game.title_text }}</a></td>
+          <td>{{ game.title_text }}</td>
           <td>{{ game.console_text }}</td>
+          <td>{{ game.category_text }}</td>
+          <td>{{ game.nb_player }}</td>
         </tr>
-        {% empty %}
-        <tr>
-          <td colspan="2">No games found.</td>
-        </tr>
-        {% endfor %}
       </tbody>
     </table>
   </main>

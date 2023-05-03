@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path("", views.GameListView, name="gamelist"),
-    path("<int:pk>", views.GameDetailView, name="gamedetails"),
+    path("<int:game_id>", views.GameDetailView, name="gamedetails"),
 ]
