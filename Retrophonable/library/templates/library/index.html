@@ -63,7 +63,7 @@
     th, td {
       text-align: left;
       padding: 8px;
-      border: 1px solid #ddd;
+      #border: 1px solid #ddd;
     }
 
     th {
@@ -73,6 +73,19 @@
 
     tr:nth-child(even) {
       background-color: #f2f2f2;
+    }
+
+    tr:first-child th:first-child {
+        border-top-left-radius: 8px;
+    }
+    tr:first-child th:last-child {
+        border-top-right-radius: 8px;
+    }
+    tr:last-child td:first-child {
+        border-bottom-left-radius: 8px;
+    }
+    tr:last-child td:last-child {
+        border-bottom-right-radius: 8px;
     }
 
     /* Media queries */
@@ -96,11 +109,43 @@
         font-size: 0.9em;
       }
     }
+
+    #searchbar
+    .search-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search-box input[type="text"] {
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    .search-box button[type="submit"] {
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>RetroPhonable</h1>
+    <div class="search-box">
+      <form method="POST" action="{% url 'library:ButtonSearch' %}">
+        {% csrf_token %}
+        <input type="text" placeholder="Rechercher.." name="search_query" value="{{ search_query }}">
+        <button type="submit" name="recherche">Rechercher</button>
+      </form>
+    </div>
   </header>
 
   <main>
