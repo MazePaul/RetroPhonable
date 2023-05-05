@@ -26,7 +26,8 @@
       font-weight: bold;
     }
     main {
-      max-width: 800px;
+      width: 90%;
+      height: 100%;
       margin: 2em auto;
       padding: 0 1em;
     }
@@ -62,9 +63,8 @@
 
     table {
       border-collapse: collapse;
-      width: 100%;
+      width: 70%;
       margin-bottom: 20px;
-      flex: 1;
     }
 
     th, td {
@@ -150,6 +150,46 @@
       color: #fff;
       cursor: pointer;
     }
+
+
+
+
+
+    .sidebar {
+      top: 0;
+      left: 0;
+      width: 200px;
+      padding: 1em;
+      box-sizing: border-box;
+    }
+    .sidebar h3 {
+      margin-top: 0;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li {
+      margin-bottom: 0.5em;
+    }
+    .sidebar a {
+      color: #333;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      color: #007bff;
+    }
+
+
+
+
+    .container {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			height: 100%;
+		}
   </style>
 </head>
 <body>
@@ -167,26 +207,36 @@
   <main>
     <h2><a href="/library/{{ game.id }}">Games</a></h2>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Console</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for game in games %}
-        <tr>
-          <td><a href="/library/{{ game.id }}">{{ game.title_text }}</a></td>
-          <td>{{ game.console_text }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-          <td colspan="2">No games found.</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <div class="container">
+      <div class="sidebar">
+        <h3>Sort by:</h3>
+        <ul>
+          <li><a href="#">Title</a></li>
+          <li><a href="#">Console</a></li>
+          <li><a href="#">Year</a></li>
+        </ul>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Console</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for game in games %}
+          <tr>
+            <td><a href="/library/{{ game.id }}">{{ game.title_text }}</a></td>
+            <td>{{ game.console_text }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="2">No games found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </main>
 
   <footer>
