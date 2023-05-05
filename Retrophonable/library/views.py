@@ -1,9 +1,9 @@
 from django.shortcuts import get_object_or_404, render
-from django.http import Http404
+from django.contrib import messages
 from .models import Game
 
 def GameListView(request):
-    #appel API pour lister l'ensemble des jeux vidéos
+    #appel API pour lister l'ensemble des jeux vidéosw
     games = Game.objects.order_by("title_text")
 
     # The context is a dictionary mapping template variable names to Python objects.
@@ -16,3 +16,11 @@ def GameListView(request):
 def GameDetailView(request, game_id):
     game = get_object_or_404(Game, pk=game_id)
     return render(request, "library/detail.html", {"game":game})
+
+def ButtonSearch(request):
+    if request.method == "POST":
+        #if "recherche" in request.POST:
+        search_query = request.POST.get('search_query', '')
+        games = Game.objects.filter(title_text__icontains=search_query)
+        context = {"games": games, "search_query": search_query}
+        return render(request, 'library/index.html', context)
