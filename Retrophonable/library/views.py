@@ -30,6 +30,7 @@ def CategorySearch(request):
         #enumeration des différentes catégories possible
         cat_console = request.POST.get('console', '')
         cat_category = request.POST.get('category', '')
+        cat_multiplayer = request.POST.get('multiplayer', '')
         #in case of console and category left empty
         games = Game.objects.all()
 
@@ -37,7 +38,8 @@ def CategorySearch(request):
             games = games.filter(console_text=cat_console)
         if cat_category:
             games = games.filter(category_text=cat_category)
-
+        if cat_multiplayer:
+            games = games.filter(multiplayer=cat_multiplayer)
         context = {
             "games": games
         }
