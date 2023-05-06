@@ -6,6 +6,10 @@ def GameListView(request):
     #appel API pour lister l'ensemble des jeux vidéosw
     games = Game.objects.order_by("title_text")
 
+    if request.method == "POST":
+        if request.name == "categorie":
+            games = Game.object.order_by("categorie_text")
+
     # The context is a dictionary mapping template variable names to Python objects.
     # le mot clé "games" va permettre à l'index.html de faire le lien avec la variable games d'ici
     context = {"games": games}
