@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>RetroPhonable</title>
   <style>
-/* Global styles */
+    /* Global styles */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -213,12 +213,32 @@
     <div class="container">
       <div class="sidebar">
         <h3>Filtre:</h3>
-        <ul>
-          <li><a href="#">Titre</a></li>
-          <li><a href="#">Console</a></li>
-          <li><a href="#">Catégorie</a></li>
-          <li><a href="#">Nombre de Joueur(s)</a></li>
-        </ul>
+        <form method="POST" action="{% url 'library:CategorySearch' %}">
+          {% csrf_token %}
+          <label for="console">Console:</label>
+          <select id="console" name="console">
+            <option value="">Choose a console</option>
+            <option value="Playstation 1">PlayStation 1</option>
+            <option value="Playstation 2">PlayStation 2</option>
+            <option value="Playstation 3">PlayStation 3</option>
+          </select>
+
+          <label for="category">Category:</label>
+          <select id="category" name="category">
+            <option value="">Choose a category</option>
+            <option value="Aventure">Adventure</option>
+            <option value="Sport">Sport</option>
+            <option value="Racing">Racing</option>
+            <option value="Combat">Combat</option>
+            <option value="Action">Action</option>
+            <option value="FPS">FPS</option>
+          </select>
+
+          <label for="multiplayer">Multiplayer:</label>
+          <input type="checkbox" id="multiplayer" name="multiplayer" value="1">
+
+          <button type="submit">Submit</button>
+        </form>
       </div>
       <table>
         <thead>

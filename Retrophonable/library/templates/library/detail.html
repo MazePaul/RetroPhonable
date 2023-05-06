@@ -26,7 +26,8 @@
       font-weight: bold;
     }
     main {
-      max-width: 800px;
+      width: 95%;
+      height: 100%;
       margin: 2em auto;
       padding: 0 1em;
     }
@@ -54,10 +55,15 @@
       text-align: center;
     }
 
+
+
+
+
     table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 20px;
+      border-collapse: collapse;
+      width: 70%;
+      margin-bottom: 20px;
+
     }
 
     th, td {
@@ -68,24 +74,63 @@
 
     th {
       background-color: #f2f2f2;
+      text-align: center;
     }
 
     tr:first-child th:first-child {
         border-top-left-radius: 8px;
+        text-align: center;
     }
     tr:first-child th:last-child {
         border-top-right-radius: 8px;
+        text-align: center;
     }
     tr:last-child td:first-child {
         border-bottom-left-radius: 8px;
+        text-align: center;
     }
     tr:last-child td:last-child {
         border-bottom-right-radius: 8px;
+        text-align: center;
     }
 
     tr:nth-child(even) {
       background-color: #f2f2f2;
     }
+
+
+
+
+    .sidebar {
+      top: 0;
+      left: 0;
+      width: 20 %;
+      height: 60%;
+      background-color: #f2f2f2;
+      padding: 1em;
+      box-sizing: border-box;
+    }
+    .sidebar h3 {
+      margin-top: 0;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li {
+      margin-bottom: 0.5em;
+    }
+    .sidebar a {
+      color: #333;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      color: #007bff;
+    }
+
+
+
 
     /* Media queries */
     @media (max-width: 600px) {
@@ -108,6 +153,12 @@
         font-size: 0.9em;
       }
     }
+
+
+
+
+
+
 
     #searchbar
     .search-box {
@@ -133,6 +184,16 @@
       color: #fff;
       cursor: pointer;
     }
+
+
+
+    .container {
+			display: flex;
+			flex-direction: row;
+			width: 75%;
+			height: 100%;
+			justify-content: space-between;
+	}
   </style>
 </head>
 <body>
@@ -150,24 +211,35 @@
   <main>
     <h2><a href="/library/">Games</a></h2>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Console</th>
-          <th>Categorie</th>
-          <th>Nombre de Joueur(s)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{ game.title_text }}</td>
-          <td>{{ game.console_text }}</td>
-          <td>{{ game.category_text }}</td>
-          <td>{{ game.nb_player }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="container">
+      <div class="sidebar">
+        <h3>Filtre:</h3>
+        <ul>
+          <li><a href="#">Titre</a></li>
+          <li><a href="#">Console</a></li>
+          <li><a href="#">Catégorie</a></li>
+          <li><a href="#">Nombre de Joueur(s)</a></li>
+        </ul>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Console</th>
+            <th>Categorie</th>
+            <th>Nombre de Joueur(s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ game.title_text }}</td>
+            <td>{{ game.console_text }}</td>
+            <td>{{ game.category_text }}</td>
+            <td>{{ game.nb_player }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </main>
 
   <footer>
