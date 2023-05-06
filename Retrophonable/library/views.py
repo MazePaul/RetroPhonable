@@ -3,7 +3,7 @@ from django.contrib import messages
 from .models import Game
 
 def GameListView(request):
-    #appel API pour lister l'ensemble des jeux vidéosw
+    #appel API pour lister l'ensemble des jeux vidéos
     games = Game.objects.order_by("title_text")
 
     # The context is a dictionary mapping template variable names to Python objects.
@@ -23,4 +23,24 @@ def ButtonSearch(request):
         search_query = request.POST.get('search_query', '')
         games = Game.objects.filter(title_text__icontains=search_query)
         context = {"games": games, "search_query": search_query}
+        return render(request, 'library/index.html', context)
+
+def CategorySearch(request):
+    if request.method == "POST":
+        #enumeration des différentes catégories possible
+        cat_console = request.POST.get('console', '')
+        cat_category = request.POST.get('category', '')
+        cat_multiplayer = request.POST.get('multiplayer', '')
+        #in case of console and category left empty
+        games = Game.objects.all()
+
+        if cat_console:
+            games = games.filter(console_text=cat_console)
+        if cat_category:
+            games = games.filter(category_text=cat_category)
+        if cat_multiplayer:
+            games = games.filter(multiplayer=cat_multiplayer)
+        context = {
+            "games": games
+        }
         return render(request, 'library/index.html', context)

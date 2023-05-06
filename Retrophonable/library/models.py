@@ -5,7 +5,7 @@ class Game(models.Model):
     console_text = models.CharField(max_length=32)
     title_text = models.CharField(max_length=64)
     category_text = models.CharField(max_length=16)
-    nb_player = models.IntegerField(default=1)
+    multiplayer = models.BooleanField(default=0)
 
     #Hence comprehension of which object (games) it is
     def __str__(self):
@@ -16,3 +16,5 @@ class Game(models.Model):
         return self.category_text
     def playable_with(self):
         return self.nb_player
+    def is_multiplayer(self):
+        return self.multiplayer
