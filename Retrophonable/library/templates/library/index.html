@@ -1,228 +1,38 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>RetroPhonable</title>
-  <style>
-    /* Global styles */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 1em;
-      text-align: center;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-    main {
-      width: 95%;
-      height: 100%;
-      margin: 2em auto;
-      padding: 0 1em;
-    }
-    h2 {
-      margin-top: 0;
-      font-size: 2em;
-    }
-    a {
-      color: #333;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    a:hover {
-      color: #333;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    p {
-      margin: 0;
-    }
-    footer {
-      background-color: #333;
-      color: #fff;
-      padding: 1em;
-      text-align: center;
-    }
-
-
-
-
-
-
-
-    table {
-      border-collapse: collapse;
-      width: 70%;
-      margin-bottom: 20px;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 8px;
-      #border: 1px solid #ddd;
-    }
-
-    th {
-      background-color: #f2f2f2;
-      text-align: center;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    tr:first-child th:first-child {
-        border-top-left-radius: 8px;
-    }
-    tr:first-child th:last-child {
-        border-top-right-radius: 8px;
-    }
-    tr:last-child td:first-child {
-        border-bottom-left-radius: 8px;
-    }
-    tr:last-child td:last-child {
-        border-bottom-right-radius: 8px;
-    }
-
-
-
-
-
-
-    /* Media queries */
-    @media (max-width: 600px) {
-      nav {
-        flex-wrap: wrap;
-      }
-      nav li {
-        margin-bottom: 0.5em;
-      }
-      nav a {
-        font-size: 0.8em;
-      }
-      h1 {
-        font-size: 2em;
-      }
-      h2 {
-        font-size: 1.5em;
-      }
-      li {
-        font-size: 0.9em;
-      }
-    }
-
-
-
-
-
-
-    .search-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .search-box input[type="text"] {
-      border: none;
-      border-radius: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      margin-right: 10px;
-    }
-
-    .search-box button[type="submit"] {
-      border: none;
-      border-radius: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #007bff;
-      color: #fff;
-      cursor: pointer;
-    }
-
-
-
-
-
-    .sidebar {
-      top: 0;
-      left: 0;
-      width: 20 %;
-      height: 60%;
-      background-color: #f2f2f2;
-      padding: 1em;
-      box-sizing: border-box;
-    }
-    .sidebar h3 {
-      margin-top: 0;
-    }
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .sidebar li {
-      margin-bottom: 0.5em;
-    }
-    .sidebar a {
-      color: #333;
-      text-decoration: none;
-    }
-    .sidebar a:hover {
-      color: #007bff;
-    }
-
-
-
-
-    .container {
-			display: flex;
-			flex-direction: row;
-			width: 75%;
-			height: 100%;
-			justify-content: space-between;
-	}
-  </style>
+  <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+  <script type="text/javascript" src="{% static 'js/overlay.js' %}"></script>
 </head>
 <body>
   <header>
-    <h1>RetroPhonable</h1>
-    <div class="search-box">
-      <form method="POST" action="{% url 'library:ButtonSearch' %}">
-        {% csrf_token %}
-        <input type="text" placeholder="Rechercher.." name="search_query" value="{{ search_query }}">
-        <button type="submit" name="recherche">Rechercher</button>
-      </form>
-    </div>
+    <h1><a href="/library/">RetroPhonable</a></h1>
   </header>
 
   <main>
-    <h2><a href="/library/{{ game.id }}">Games</a></h2>
 
     <div class="container">
       <div class="sidebar">
         <h3>Filtre:</h3>
         <form method="POST" action="{% url 'library:CategorySearch' %}">
           {% csrf_token %}
+          <input type="text" placeholder="Rechercher.." name="search_query" value="{{ search_query }}">
+          <br>
           <label for="console">Console:</label>
           <select id="console" name="console">
             <option value="">Choose a console</option>
+            <option value="Gameboy">Gameboy</option>
+            <option value="Nintendo Switch">Switch</option>
             <option value="Playstation 1">PlayStation 1</option>
             <option value="Playstation 2">PlayStation 2</option>
             <option value="Playstation 3">PlayStation 3</option>
+            <option value="Supervision">Supervision</option>
           </select>
-
+          <br>
           <label for="category">Category:</label>
           <select id="category" name="category">
             <option value="">Choose a category</option>
@@ -233,7 +43,7 @@
             <option value="Action">Action</option>
             <option value="FPS">FPS</option>
           </select>
-
+          <br>
           <label for="multiplayer">Multiplayer:</label>
           <input type="checkbox" id="multiplayer" name="multiplayer" value="1">
 
@@ -250,6 +60,7 @@
         <tbody>
           {% for game in games %}
           <tr>
+            <!-- il faut faire passer l'id du jeu avec la fonction python GameDetails -->
             <td><a href="/library/{{ game.id }}">{{ game.title_text }}</a></td>
             <td>{{ game.console_text }}</td>
           </tr>
@@ -260,7 +71,35 @@
           {% endfor %}
         </tbody>
       </table>
+
+      <div id="overlay" class="overlay">
+        <div class="content">
+          <div class ="container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Console</th>
+                  <th>Categorie</th>
+                  <th>Multijoueur</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="title"></td>
+                  <td class="console"></td>
+                  <td class="category"></td>
+                  <td class="multiplayer"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <a class="close" onclick="closeOverlay();">Close</a>
+        </div>
+      </div>
+
     </div>
+
   </main>
 
   <footer>

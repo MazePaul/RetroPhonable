@@ -17,16 +17,9 @@ def GameDetailView(request, game_id):
     game = get_object_or_404(Game, pk=game_id)
     return render(request, "library/detail.html", {"game":game})
 
-def ButtonSearch(request):
-    if request.method == "POST":
-        #if "recherche" in request.POST:
-        search_query = request.POST.get('search_query', '')
-        games = Game.objects.filter(title_text__icontains=search_query)
-        context = {"games": games, "search_query": search_query}
-        return render(request, 'library/index.html', context)
-
 def CategorySearch(request):
     if request.method == "POST":
+        search_query = request.POST.get('search_query', '')
         #enumeration des différentes catégories possible
         cat_console = request.POST.get('console', '')
         cat_category = request.POST.get('category', '')
@@ -34,6 +27,8 @@ def CategorySearch(request):
         #in case of console and category left empty
         games = Game.objects.all()
 
+        if search_query:
+            games = games.filter(title_text__icontains=search_query)
         if cat_console:
             games = games.filter(console_text=cat_console)
         if cat_category:
