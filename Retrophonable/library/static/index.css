@@ -194,12 +194,13 @@ tr:last-child td:last-child {
 
 .multiplayer {
   text-align: center;
-  padding: 5px;
+  padding: 7px;
   background-color: #fff;
   border-radius: 5px;
-  width: 80%;
+  width: 73%;
   margin: 0 auto 20px;
   display: block;
+  font-size: 0.9em;
 }
 
 

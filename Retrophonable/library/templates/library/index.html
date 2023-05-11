@@ -57,7 +57,6 @@
         <tbody>
           {% for game in games %}
           <tr>
-            <!-- il faut faire passer l'id du jeu avec la fonction python GameDetails -->
             <td><a href="/library/{{ game.id }}">{{ game.title_text }}</a></td>
             <td>{{ game.console_text }}</td>
           </tr>
