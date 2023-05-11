@@ -1,14 +1,16 @@
 /* Global styles */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Ubuntu", sans-serif;
+  background-color: #F4EAD6;
 }
+
 header {
-  background-color: #fff;
   color: #fff;
   padding: 1em;
   text-align: center;
 }
+
 h1 {
   margin: 0;
   font-size: 2.5em;
@@ -44,9 +46,12 @@ p {
   margin: 0;
 }
 footer {
+  position: fixed;
+  width: 100%;
   background-color: #333;
   color: #fff;
   padding: 1em;
+  bottom: 0;
   text-align: center;
 }
 
@@ -57,6 +62,7 @@ footer {
 
 
 table {
+  min-height: 0;
   border-collapse: collapse;
   width: 70%;
   margin-bottom: 20px;
@@ -65,16 +71,19 @@ table {
 th, td {
   text-align: center;
   padding: 8px;
-  #border: 1px solid #ddd;
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: #918B7D;
+  color: #F4EAD6;
   text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 12px;
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #C8C3B3;
 }
 
 tr:first-child th:first-child {
@@ -120,75 +129,87 @@ tr:last-child td:last-child {
 
 
 
-
-
-.search-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.search-box input[type="text"] {
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-.search-box button[type="submit"] {
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-}
-
-
-
-
-
 .sidebar {
   top: 0;
   left: 0;
-  width: 20 %;
+  width: 15 %;
   height: 60%;
-  background-color: #f2f2f2;
-  padding: 1em;
-  box-sizing: border-box;
+  background-color: #918B7D;
+  padding: 2em;
+  border-radius: 8px;
+  margin-right: 10px;
 }
-.sidebar h3 {
-  margin-top: 0;
+
+.sidebar label {
+    margin-bottom: 10px;
 }
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+
+.sidebar input[type="text"],
+.sidebar select {
+  width: 80%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin: 0 auto 5px;
+  font-family: Ubuntu;
+  text-align: center;
+  display: block;
+  background-color: #fff;
 }
-.sidebar li {
-  margin-bottom: 0.5em;
+
+.sidebar input[type="text"]::placeholder,
+.sidebar select::placeholder {
+  color: #C0C0C0;
+  font-style: italic;
 }
-.sidebar a {
+
+.sidebar input[type="checkbox"] {
+  margin-left: 10px;
+}
+
+.sidebar button[type="submit"] {
+  width: 90%;
+  padding: 10px;
+  background-color: #F4EAD6;
   color: #333;
-  text-decoration: none;
-}
-.sidebar a:hover {
-  color: #007bff;
+  font-family: Ubuntu;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  display: block;
 }
 
+.sidebar button[type="submit"]:hover {
+  background-color: #C8C3B3;
+}
 
+.sidebar select option {
+  color: #333;
+  font-family: Ubuntu;
+  font-weight: bold;
+}
+
+.multiplayer {
+  text-align: center;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 80%;
+  margin: 0 auto 20px;
+  display: block;
+}
 
 
 .container {
-        display: flex;
-        flex-direction: row;
-        width: 75%;
-        height: 100%;
-        justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    height: 100%;
+    justify-content: space-between;
 }
-
 
 
 
