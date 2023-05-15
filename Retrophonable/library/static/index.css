@@ -100,7 +100,26 @@ tr:last-child td:last-child {
 }
 
 
+.table-overlay{
+  min-height: 0;
+  border-collapse: collapse;
+  margin: 0 auto;
+  white-space: nowrap;
+}
 
+.table-overlay th, .table-overlay td {
+  text-align: center;
+  padding: 8px;
+}
+
+.table-overlay th {
+  background-color: #918B7D;
+  color: #F4EAD6;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 12px;
+}
 
 
 
