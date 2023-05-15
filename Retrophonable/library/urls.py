@@ -7,5 +7,5 @@ app_name='library'
 urlpatterns = [
     path("", views.GameListView, name="gamelist"),
     path('search/', CategorySearch, name='CategorySearch'),
-    path("<int:game_id>", views.GameDetailView, name="gamedetails"),
+    path("game/<int:pk>/", views.GameDetailView, name="GameDetailView"),
 ]

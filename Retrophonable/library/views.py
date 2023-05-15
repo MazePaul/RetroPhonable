@@ -1,5 +1,5 @@
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
-from django.contrib import messages
 from .models import Game
 
 def GameListView(request):
@@ -12,10 +12,17 @@ def GameListView(request):
     # It’s a very common idiom to load a template, fill a context and return an HttpResponse object with the result of the rendered template.
     return render(request, "library/index.html", context)
 
-
-def GameDetailView(request, game_id):
-    game = get_object_or_404(Game, pk=game_id)
-    return render(request, "library/detail.html", {"game":game})
+#retrieve information from the database and the output to js script in json format
+#use the url.py
+def GameDetailView(request, pk=None):
+    game = get_object_or_404(Game, pk=pk)
+    data = {
+        'title': game.title_text,
+        'console': game.console_text,
+        'category': game.category_text,
+        'multiplayer': game.multiplayer,
+    }
+    return JsonResponse(data)
 
 def CategorySearch(request):
     if request.method == "POST":
