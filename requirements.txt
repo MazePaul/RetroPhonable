@@ -1,0 +1,12 @@
+#Install python3
+
+#Install pip
+sudo apt install python3-pip
+
+#Install django
+pip install django
+
+#Create a venv in Retrophonable directory
+cd ~/Retrophonable/Retrophonable
+python -m venv venv
+source venv/bin/activate
