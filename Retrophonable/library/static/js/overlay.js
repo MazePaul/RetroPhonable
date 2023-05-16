@@ -8,7 +8,7 @@ overlay.addEventListener('click', (event) => {
 });
 
 //creation de la fonction pour passer les détails des jeux
-function openOverlay(gameId) {
+function openOverlay(gameId, url) {
   var gameIdInput = overlay.querySelector("#game-id");
   var titleText = overlay.querySelector("#game-title");
   var consoleText = overlay.querySelector("#game-console");
@@ -35,6 +35,24 @@ function openOverlay(gameId) {
       console.log(gameData);
     }
   };
-  xhr.open('GET', `game/${gameId}/`);
-  xhr.send();
+  //xhr.open('GET', `game/${gameId}/`);
+  //On check si c'est search ou non (url non vide = search)
+  if (url){
+    xhr.open('GET', `${gameId}/`);
+    xhr.send();
+  }else{
+    xhr.open('GET', `search/${gameId}/`);
+    xhr.send();
+  }
+}
+
+function determineUrl(gameId){
+    var url=window.location.pathname;
+    let bool="";
+    if (url.includes("search/")){
+        bool = "search/";
+        openOverlay(gameId, bool);
+    }else{
+        openOverlay(gameId, bool);
+    }
 }
