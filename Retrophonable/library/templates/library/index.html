@@ -7,7 +7,6 @@
   <title>RetroPhonable</title>
   <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-  <script type="text/javascript" src="{% static 'js/overlay.js' %}"></script>
 </head>
 <body>
   <header>
@@ -17,7 +16,7 @@
   <main>
 
     <div class="container">
-      <div class="sidebar">
+        <div class="sidebar">
         <form method="POST" action="{% url 'library:CategorySearch' %}">
           {% csrf_token %}
           <input type="text" placeholder="Research a game" name="search_query" value="{{ search_query }}">
@@ -57,7 +56,8 @@
         <tbody>
           {% for game in games %}
           <tr>
-            <td><a href="/library/{{ game.id }}">{{ game.title_text }}</a></td>
+            <td><a onclick="event.preventDefault(); determineUrl({{game.id}})" href="{% url 'library:GameDetailView' pk=game.id %}">{{ game.title_text }}</a></td>
+
             <td>{{ game.console_text }}</td>
           </tr>
           {% empty %}
@@ -68,12 +68,35 @@
         </tbody>
       </table>
 
+      <div class="overlay">
+        <div class="overlay-content">
+          <input type="hidden" id="game-id" name="game_id">
+          <table class="table-overlay">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Console</th>
+                <th>Categorie</th>
+                <th>Multijoueur</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="game-title"></td>
+                <td id="game-console"></td>
+                <td id="game-category"></td>
+                <td id="game-multiplayer"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-
   </main>
 
   <footer>
     <p>&copy; 2023 Retrophonable. All rights reserved.</p>
   </footer>
 </body>
+<script src="{% static 'js/overlay.js' %}"></script>
 </html>
