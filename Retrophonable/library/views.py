@@ -1,6 +1,8 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from .models import Game
+from Retrophonable import settings
+from urllib.parse import urljoin
 
 def GameListView(request):
     #appel API pour lister l'ensemble des jeux vidéos
@@ -16,11 +18,14 @@ def GameListView(request):
 #use the url.py
 def GameDetailView(request, pk=None):
     game = get_object_or_404(Game, pk=pk)
+    cover_url = urljoin(settings.MEDIA_ROOT, game.cover.url)
+    COVER_debug = "/home/maze/Documents/Programmation/IdeaProjects/Retrophonable/Retrophonable/media/images/placeholder.jpeg"
     data = {
         'title': game.title_text,
         'console': game.console_text,
         'category': game.category_text,
         'multiplayer': game.multiplayer,
+        'cover': COVER_debug,
     }
     return JsonResponse(data)
 
