@@ -14,7 +14,9 @@ function openOverlay(gameId, url) {
   var consoleText = overlay.querySelector("#game-console");
   var categoryText = overlay.querySelector("#game-category");
   var multiplayerText = overlay.querySelector("#game-multiplayer");
-  var coverText = overlay.querySelector("#game-cover")
+  var coverText = overlay.querySelector("#game-cover");
+
+  var bool = "";
 
   // Set the value of the hidden input field
   gameIdInput.value = gameId;
@@ -29,12 +31,17 @@ function openOverlay(gameId, url) {
       titleText.innerHTML = gameData.title;
       consoleText.innerHTML = gameData.console;
       categoryText.innerHTML = gameData.category;
-      multiplayerText.innerHTML = gameData.multiplayer;
+      if (gameData.multiplayer == false){
+        bool = "non"
+      }else{
+        bool = "oui"
+      }
+      multiplayerText.innerHTML = bool;
       coverText.src = gameData.cover;
       overlay.style.display = "block";
 
-      console.level = 'debug'
-      console.log(gameData);
+      coverText.style.width = '200px';
+      coverText.style.height = 'auto';
     }
   };
   //xhr.open('GET', `game/${gameId}/`);

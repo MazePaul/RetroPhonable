@@ -19,13 +19,13 @@ def GameListView(request):
 def GameDetailView(request, pk=None):
     game = get_object_or_404(Game, pk=pk)
     cover_url = urljoin(settings.MEDIA_ROOT, game.cover.url)
-    COVER_debug = "/home/maze/Documents/Programmation/IdeaProjects/Retrophonable/Retrophonable/media/images/placeholder.jpeg"
+    #cover_url = "RetroPhonable/Retrophonable/media/images/placeholder.jpeg"
     data = {
         'title': game.title_text,
         'console': game.console_text,
         'category': game.category_text,
         'multiplayer': game.multiplayer,
-        'cover': COVER_debug,
+        'cover': cover_url,
     }
     return JsonResponse(data)
 
