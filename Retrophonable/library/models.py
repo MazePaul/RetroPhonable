@@ -6,6 +6,8 @@ class Game(models.Model):
     title_text = models.CharField(max_length=64)
     category_text = models.CharField(max_length=16)
     multiplayer = models.BooleanField(default=0)
+    #upload_to='images/' permet d'upload les images dans la valeur de MEDIA ROOT définie dans settings.py
+    cover = models.ImageField(upload_to='images', default='images/placeholder.jpeg')
 
     #Hence comprehension of which object (games) it is
     def __str__(self):
@@ -18,3 +20,5 @@ class Game(models.Model):
         return self.nb_player
     def is_multiplayer(self):
         return self.multiplayer
+    def cover_game(self):
+        return self.cover

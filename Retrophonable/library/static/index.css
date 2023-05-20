@@ -45,21 +45,18 @@ a:hover {
 p {
   margin: 0;
 }
+
+
 footer {
   position: fixed;
   width: 100%;
   background-color: #333;
   color: #fff;
+  margin-top: 20px;
   padding: 1em;
   bottom: 0;
   text-align: center;
 }
-
-
-
-
-
-
 
 table {
   min-height: 0;
@@ -119,6 +116,7 @@ tr:last-child td:last-child {
   font-size: 1.5em;
   font-weight: bold;
   padding: 12px;
+  margin-left: 50px;
 }
 
 
@@ -229,6 +227,8 @@ tr:last-child td:last-child {
     width: 75%;
     height: 100%;
     justify-content: space-between;
+    align-items: flex-start; /* Align items to the top of the container */
+    height: auto;
 }
 
 
@@ -245,6 +245,8 @@ tr:last-child td:last-child {
 
 /* Overlay content */
 .overlay-content {
+  display: flex;
+  flex-direction: row;
   position: absolute;
   background-color: #F4EAD6;
   width: auto;
@@ -268,4 +270,8 @@ tr:last-child td:last-child {
 .overlay p {
   font-size: 1.2rem;
   line-height: 1.5;
+}
+
+.overlay-content .cover {
+  margin-right: 1rem; /* Add margin between element1 and element2 */
 }
