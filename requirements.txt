@@ -4,7 +4,7 @@
 pip 22.0.2
 
 #Install django
-pip install django
+django 4.2
 
 #Create a venv in Retrophonable directory
 cd ~/Retrophonable/Retrophonable
