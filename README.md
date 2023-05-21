@@ -1,3 +1,3 @@
 # RetroPhonable
 
-Library system in Django Early development/WIP.
+Library system in Django WIP.
