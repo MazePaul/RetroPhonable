@@ -1,21 +1,6 @@
-<<<<<<< HEAD
 asgiref==3.6.0
 Django==4.2.1
 Pillow==9.5.0
 sqlparse==0.4.4
 setuptools==66.1.1
 pip==23.0.1
-=======
-#Install python3
-
-#Install pip
-pip 22.0.2
-
-#Install django
-django 4.2
-
-#Create a venv in Retrophonable directory
-cd ~/Retrophonable/Retrophonable
-python -m venv venv
-source venv/bin/activate
->>>>>>> ef0eaddd2f5149892da24fbfe19b74ba860f70fb
