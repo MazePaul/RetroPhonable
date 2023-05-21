@@ -40,8 +40,8 @@ function openOverlay(gameId, url) {
       coverText.src = gameData.cover;
       overlay.style.display = "block";
 
-      coverText.style.width = '200px';
-      coverText.style.height = 'auto';
+      coverText.style.width = 'auto';
+      coverText.style.height = '300px';
     }
   };
   //xhr.open('GET', `game/${gameId}/`);
