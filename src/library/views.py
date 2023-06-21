@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from .models import Game
-from Retrophonable import settings
+from retrophonable import settings
 from urllib.parse import urljoin
 
 def GameListView(request):
@@ -19,7 +19,7 @@ def GameListView(request):
 def GameDetailView(request, pk=None):
     game = get_object_or_404(Game, pk=pk)
     cover_url = urljoin(settings.MEDIA_ROOT, game.cover.url)
-    #cover_url = "RetroPhonable/Retrophonable/media/images/placeholder.jpeg"
+    #cover_url = "RetroPhonable/retrophonable/media/images/placeholder.jpeg"
     data = {
         'title': game.title_text,
         'console': game.console_text,
