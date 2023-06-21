@@ -1,9 +1,10 @@
-Retrophonable/venvretro/
+src/venvretro/
 *.log
 *.pot
 *.pyc
-/Retrophonable/library/__pycache__/
-/Retrophonable/Retrophonable/__pycache__/
-Retrophonable/Retrophonable/settings.py
-Retrophonable/db.sqlite3
+/src/library/__pycache__/
+/src/Retrophonable/__pycache__/
+src/Retrophonable/settings.py
+src/db.sqlite3
 media
+venv/
