@@ -7,4 +7,4 @@ src/venvretro/
 src/Retrophonable/settings.py
 src/db.sqlite3
 media
-venv/
+venv
