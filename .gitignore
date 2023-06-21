@@ -2,8 +2,8 @@
 *.pot
 *.pyc
 src/library/__pycache__/
-src/Retrophonable/__pycache__/
-src/Retrophonable/settings.py
+src/retrophonable/__pycache__/
+src/retrophonable/settings.py
 src/db.sqlite3
 media
 venv
