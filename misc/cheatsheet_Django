@@ -23,6 +23,9 @@ A blog app that handles creating, editing, and displaying blog posts.
 An authentication app that handles user authentication and registration.
 A shopping cart app that handles adding and removing items from a user's shopping cart.
 
+To create a new app:
+python manage.py startapp projectnam
+
 
 Models in a nutshell:
 Change your models (in models.py).
